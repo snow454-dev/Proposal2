@@ -144,11 +144,19 @@ body::before{
 .ph{
   position:relative;
   overflow:hidden;
+  isolation:isolate;
   background: linear-gradient(135deg, #d8c9a8 0%, #b9a17f 50%, #8a7a5e 100%);
 }
 .ph svg{
   position:absolute; inset:0;
   width:100%; height:100%;
+}
+/* real photo overlay; falls back to the SVG art if it fails to load */
+.ph__img{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  z-index:1;
 }
 .ph--hero{
   background: linear-gradient(160deg, #6b5d44 0%, #4a4030 40%, #2e2a20 100%);
@@ -693,6 +701,7 @@ section{ position:relative; padding: clamp(80px, 12vh, 160px) var(--gutter); }
 .card:hover .card__img .ph{ transform: scale(1.06); }
 .card__cat{
   position:absolute; top:16px; left:16px;
+  z-index:5;
   background: var(--paper);
   padding: 6px 12px;
   font-size: 11px;
@@ -1382,7 +1391,7 @@ footer{
         <g transform="translate(900, 600) scale(.9)" opacity=".6"><use href="#bloom"/></g>
         <g transform="translate(1300, 250) scale(.6)" opacity=".5"><use href="#bloom"/></g>
       </svg>
-      <span class="ph__label">下仁田の山あい ／ Image placeholder</span>
+      <img class="ph__img" src="https://images.unsplash.com/photo-1710587385309-f264b4d503cd?auto=format&fit=crop&w=2000&q=80" alt="色とりどりの花が並ぶ、花のたかはしの店先" loading="eager" referrerpolicy="no-referrer" onerror="this.style.display='none'">
     </div>
   </div>
 
@@ -1433,7 +1442,7 @@ footer{
           <svg viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice">
             <use href="#shop"/>
           </svg>
-          <span class="ph__label">店舗外観 ／ Image placeholder</span>
+          <img class="ph__img" src="https://images.unsplash.com/photo-1531058240690-006c446962d8?auto=format&fit=crop&w=1200&q=80" alt="花のたかはしの店内のようす" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
         </div>
       </div>
       <div class="about__body" data-reveal data-reveal-delay="1">
@@ -1611,6 +1620,7 @@ footer{
             <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
               <use href="#stems"/>
             </svg>
+            <img class="ph__img" src="https://images.unsplash.com/photo-1572454591674-2739f30d8c40?auto=format&fit=crop&w=900&q=80" alt="季のブーケ" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
           </div>
         </div>
         <h3 class="card__title">季のブーケ</h3>
@@ -1625,6 +1635,7 @@ footer{
             <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
               <g transform="translate(150,220) scale(1.6)"><use href="#bloom"/></g>
             </svg>
+            <img class="ph__img" src="https://images.unsplash.com/photo-1608656218680-e8be81ce71d7?auto=format&fit=crop&w=900&q=80" alt="テーブルアレンジメント" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
           </div>
         </div>
         <h3 class="card__title">テーブルアレンジ</h3>
@@ -1639,6 +1650,7 @@ footer{
             <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
               <g transform="translate(150,200) scale(.8)"><use href="#wreath"/></g>
             </svg>
+            <img class="ph__img" src="https://images.unsplash.com/photo-1595467959554-9ffcbf37f10f?auto=format&fit=crop&w=900&q=80" alt="ウェディングの装花" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
           </div>
         </div>
         <h3 class="card__title">ウェディング装花</h3>
@@ -1654,6 +1666,7 @@ footer{
               <use href="#stems"/>
               <g transform="translate(150,80) scale(.5)"><use href="#bloom"/></g>
             </svg>
+            <img class="ph__img" src="https://images.unsplash.com/photo-1565695951564-007d8f297e48?auto=format&fit=crop&w=900&q=80" alt="お祝いのスタンド花" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
           </div>
         </div>
         <h3 class="card__title">スタンド花</h3>
@@ -1668,6 +1681,7 @@ footer{
             <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
               <g transform="translate(150,200)"><use href="#wreath"/></g>
             </svg>
+            <img class="ph__img" src="https://images.unsplash.com/photo-1615385639736-362b69696227?auto=format&fit=crop&w=900&q=80" alt="お供えの花" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
           </div>
         </div>
         <h3 class="card__title">お供え花</h3>
@@ -1682,6 +1696,7 @@ footer{
             <svg viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice">
               <use href="#hall"/>
             </svg>
+            <img class="ph__img" src="https://images.unsplash.com/photo-1603026198288-6a94fa57e2af?auto=format&fit=crop&w=900&q=80" alt="祭壇装花" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
           </div>
         </div>
         <h3 class="card__title">祭壇装花</h3>
@@ -1701,7 +1716,7 @@ footer{
           <svg viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice">
             <use href="#hall"/>
           </svg>
-          <span class="ph__label">葬儀ホール ／ Image placeholder</span>
+          <img class="ph__img" src="https://images.unsplash.com/photo-1642751652611-bb9a7cad58a3?auto=format&fit=crop&w=1200&q=80" alt="一輪ずつ手で仕立てる祭壇の花" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
         </div>
       </div>
       <div data-reveal data-reveal-delay="1">
@@ -1778,12 +1793,12 @@ footer{
       <a href="https://www.instagram.com/hana_no_takahashi/" target="_blank" rel="noopener" class="insta__handle">＠hana_no_takahashi</a>
     </div>
     <div class="insta__grid" data-reveal data-reveal-delay="1">
-      <a href="#"><div class="ph ph--bloom"><svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><g transform="translate(100,100) scale(.7)"><use href="#bloom"/></g></svg></div></a>
-      <a href="#"><div class="ph ph--ivory"><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><g transform="translate(150,150)"><use href="#wreath"/></g></svg></div></a>
-      <a href="#"><div class="ph ph--sage"><svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice"><use href="#stems"/></svg></div></a>
-      <a href="#"><div class="ph ph--rose"><svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><g transform="translate(100,100) scale(.65)"><use href="#bloom"/></g></svg></div></a>
-      <a href="#"><div class="ph ph--moss"><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><g transform="translate(150,150) scale(.9)"><use href="#wreath"/></g></svg></div></a>
-      <a href="#"><div class="ph ph--portrait"><svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><g transform="translate(100,100) scale(.6)"><use href="#bloom"/></g></svg></div></a>
+      <a href="#"><div class="ph ph--bloom"><svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><g transform="translate(100,100) scale(.7)"><use href="#bloom"/></g></svg><img class="ph__img" src="https://images.unsplash.com/photo-1565695951564-007d8f297e48?auto=format&fit=crop&w=600&q=80" alt="花のたかはしの花の写真" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div></a>
+      <a href="#"><div class="ph ph--ivory"><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><g transform="translate(150,150)"><use href="#wreath"/></g></svg><img class="ph__img" src="https://images.unsplash.com/photo-1603026198288-6a94fa57e2af?auto=format&fit=crop&w=600&q=80" alt="花のたかはしの花の写真" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div></a>
+      <a href="#"><div class="ph ph--sage"><svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice"><use href="#stems"/></svg><img class="ph__img" src="https://images.unsplash.com/photo-1595467959554-9ffcbf37f10f?auto=format&fit=crop&w=600&q=80" alt="花のたかはしの花の写真" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div></a>
+      <a href="#"><div class="ph ph--rose"><svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><g transform="translate(100,100) scale(.65)"><use href="#bloom"/></g></svg><img class="ph__img" src="https://images.unsplash.com/photo-1572454591674-2739f30d8c40?auto=format&fit=crop&w=600&q=80" alt="花のたかはしの花の写真" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div></a>
+      <a href="#"><div class="ph ph--moss"><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><g transform="translate(150,150) scale(.9)"><use href="#wreath"/></g></svg><img class="ph__img" src="https://images.unsplash.com/photo-1608656218680-e8be81ce71d7?auto=format&fit=crop&w=600&q=80" alt="花のたかはしの花の写真" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div></a>
+      <a href="#"><div class="ph ph--portrait"><svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><g transform="translate(100,100) scale(.6)"><use href="#bloom"/></g></svg><img class="ph__img" src="https://images.unsplash.com/photo-1710587385309-f264b4d503cd?auto=format&fit=crop&w=600&q=80" alt="花のたかはしの花の写真" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div></a>
     </div>
   </div>
 </section>
